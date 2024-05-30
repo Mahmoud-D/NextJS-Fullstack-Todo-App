@@ -25,7 +25,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
+          <div className="mx-2 mt-2">
+            <ModeToggle />
+          </div>
           {children}
         </ThemeProvider>
       </body>
