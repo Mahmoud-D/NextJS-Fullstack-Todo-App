@@ -17,13 +17,22 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { Checkbox } from "../ui/checkbox";
+import Spinner from "../Spinner";
+import { useState } from "react";
 
 const defaultValues: Partial<Todos> = {
   title: "First Todo",
   body: "First Todo Description",
+  completed: false,
 };
 
-const TableForm = () => {
+type Itype = {
+  setOpen: (value: boolean) => void;
+};
+const TableForm = ({ setOpen }: Itype) => {
+  const [loading, setLoading] = useState(false);
+
   const formMethods = useForm<Todos>({
     resolver: zodResolver(todosSchema),
     defaultValues,
@@ -31,11 +40,15 @@ const TableForm = () => {
   });
 
   const onSubmit = async (data: Todos) => {
+    setLoading(true);
+
     await createTodoListAcions({
       title: data.title,
       body: data.body,
+      completed: data.completed,
     });
-    console.log(data.title);
+    setLoading(false);
+    setOpen(false);
   };
 
   return (
@@ -53,7 +66,6 @@ const TableForm = () => {
               <FormControl>
                 <Input placeholder="Title" {...field} />
               </FormControl>
-              <FormDescription>This is your Todo name.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -71,13 +83,40 @@ const TableForm = () => {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>This is your Todo Description.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="size-min mx-auto " type="submit">
-          Add To List
+        <FormField
+          control={formMethods.control}
+          name="completed"
+          render={({ field }) => (
+            <FormItem>
+              <div className="flex items-center space-x-2">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel>Completed</FormLabel>
+              </div>
+              <FormDescription>
+                Your to-do item will be uncompleted by default unless you
+                checked it.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="space-x-2" disabled={loading}>
+          {loading ? (
+            <>
+              <Spinner /> Saving
+            </>
+          ) : (
+            "Save"
+          )}
         </Button>
       </form>
     </FormProvider>
