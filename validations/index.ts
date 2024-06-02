@@ -14,7 +14,7 @@ export const todosSchema = z.object({
     })
     .max(80, { message: "Body must not exceed 50 characters" })
     .optional(),
-  completed: z.boolean(),
+  completed: z.boolean().optional(),
 });
 
 export type Todos = z.infer<typeof todosSchema>;
