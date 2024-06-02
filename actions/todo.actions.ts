@@ -16,14 +16,17 @@ export const getTodoListAcions = async () => {
 export const createTodoListAcions = async ({
   title,
   body,
+  completed,
 }: {
   title: string;
   body?: string | undefined;
+  completed: boolean;
 }) => {
   await prisma.todo.create({
     data: {
       title: title,
       body: body,
+      completed: completed,
     },
   });
 };
