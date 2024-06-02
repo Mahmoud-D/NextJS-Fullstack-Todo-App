@@ -35,4 +35,15 @@ export const createTodoListAcions = async ({
 
 export const updateTodoListAcions = async () => {};
 
-export const deleteTodoListAcions = async () => {};
+export const deleteTodoListActions = async ({
+  id,
+}: {
+  id: string;
+}): Promise<void> => {
+  await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+  revalidatePath("/");
+};
