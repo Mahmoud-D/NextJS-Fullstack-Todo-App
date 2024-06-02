@@ -5,7 +5,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const getTodoListAcions = async () => {
-  const todoList = await prisma.todo.findMany();
+  const todoList = await prisma.todo.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return todoList;
 };
 
