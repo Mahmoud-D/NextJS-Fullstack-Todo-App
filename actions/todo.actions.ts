@@ -1,6 +1,7 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -29,6 +30,7 @@ export const createTodoListAcions = async ({
       completed: completed,
     },
   });
+  revalidatePath("/");
 };
 
 export const updateTodoListAcions = async () => {};
