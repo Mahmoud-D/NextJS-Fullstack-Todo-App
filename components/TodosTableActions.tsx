@@ -12,12 +12,14 @@ import { Trash } from "lucide-react";
 
 import { Ttodo } from "@/types";
 
-const TodosTableActions = ({ todo }: { todo: Ttodo }) => {
+type TodosTableActionsProps = Ttodo;
+
+const TodosTableActions = ({ todo }: { todo: TodosTableActionsProps }) => {
   const [loading, setLoading] = useState(false);
 
   return (
     <>
-      <EditTodoTable />
+      <EditTodoTable todo={todo} />
 
       <Button
         size={"icon"}
