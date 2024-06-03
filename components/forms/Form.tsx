@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { createTodoListAcions } from "@/actions/todo.actions";
 
 import { FormProvider, useForm } from "react-hook-form";
@@ -19,18 +21,13 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Checkbox } from "../ui/checkbox";
 import Spinner from "../Spinner";
-import { useState } from "react";
-
-const defaultValues: Partial<Todos> = {
-  title: "First Todo",
-  body: "First Todo Description",
-  completed: false,
-};
+import { Ttodo } from "@/types";
 
 type Itype = {
   setOpen: (value: boolean) => void;
+  defaultValues?: Partial<Ttodo>;
 };
-const TableForm = ({ setOpen }: Itype) => {
+const TableForm = ({ setOpen, defaultValues }: Itype) => {
   const [loading, setLoading] = useState(false);
 
   const formMethods = useForm<Todos>({
