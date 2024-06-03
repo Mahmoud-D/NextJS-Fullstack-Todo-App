@@ -24,7 +24,7 @@ export const createTodoListAcions = async ({
 }: {
   title: string;
   body?: string;
-  completed: boolean;
+  completed: boolean | undefined;
 }) => {
   await prisma.todo.create({
     data: {
