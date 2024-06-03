@@ -11,7 +11,10 @@ export const getTodoListAcions = async () => {
       createdAt: "desc",
     },
   });
-  return todoList;
+  return todoList.map((todo) => ({
+    ...todo,
+    body: todo.body ?? undefined,
+  }));
 };
 
 export const createTodoListAcions = async ({
@@ -20,7 +23,7 @@ export const createTodoListAcions = async ({
   completed,
 }: {
   title: string;
-  body?: string | undefined;
+  body?: string;
   completed: boolean;
 }) => {
   await prisma.todo.create({
