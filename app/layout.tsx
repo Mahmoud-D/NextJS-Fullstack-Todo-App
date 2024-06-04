@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+
 import { ThemeProvider } from "@/providers/theme-provider";
-import { ModeToggle } from "@/components/ModeToggle";
+import { ClerkProvider, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
+
+import Nav from "@/components/Nav";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,20 +20,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="mx-2 mt-2">
-            <ModeToggle />
-          </div>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Nav />
+            {children}
+            <SignedOut>
+              <RedirectToSignIn redirectUrl="/sign-in" />
+            </SignedOut>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
