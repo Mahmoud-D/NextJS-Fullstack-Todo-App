@@ -7,6 +7,7 @@ import { createTodoListAcions } from "@/actions/todo.actions";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { todosSchema, Todos } from "@/validations/index";
+import { Ttodo } from "@/types";
 
 import {
   FormControl,
@@ -21,7 +22,6 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Checkbox } from "../ui/checkbox";
 import Spinner from "../Spinner";
-import { Ttodo } from "@/types";
 
 type Itype = {
   setOpen: (value: boolean) => void;
@@ -44,9 +44,8 @@ const TableForm = ({ setOpen, defaultValues }: Itype) => {
       title: data.title,
       body: data.body,
       completed: data.completed,
+      // userId: userId,
     });
-
-  
 
     setLoading(false);
     setOpen(false);
