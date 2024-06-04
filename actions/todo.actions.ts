@@ -1,5 +1,6 @@
 "use server";
 
+import { Ttodo } from "@/types";
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
@@ -36,7 +37,29 @@ export const createTodoListAcions = async ({
   revalidatePath("/");
 };
 
-export const updateTodoListAcions = async () => {};
+export const updateTodoListAcions = async ({
+  id,
+  title,
+  body,
+  completed,
+}: Ttodo): Promise<void> => {
+  try {
+    await prisma.todo.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        body,
+        completed: completed ?? false,
+      },
+    });
+
+    revalidatePath("/");
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
+};
 
 export const deleteTodoListActions = async ({
   id,
