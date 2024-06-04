@@ -22,7 +22,6 @@ const EditDialogComponent = ({ todo }: { todo: Ttodo }) => {
       <DialogTrigger asChild>
         <Button>
           <Pen size={16} className="mx-1" />
-          Edit Todo
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
