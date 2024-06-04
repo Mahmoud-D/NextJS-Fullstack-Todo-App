@@ -1,7 +1,7 @@
+import EditDialogComponent from "./EditDialogComponent";
 import { Ttodo } from "@/types";
-import Dialog from "./DialogComponent";
 
-type EditTodoTableProps = {
+export type EditTodoTableProps = {
   todo: Ttodo;
 };
 
@@ -11,14 +11,10 @@ const EditTodoTable = ({ todo }: EditTodoTableProps) => {
     body: todo.body,
     completed: todo.completed,
   };
+
   return (
     <div>
-      <Dialog
-        DialogTitleProp="Edit Todo"
-        DialogDescriptionProp="You can Edit Your Todo"
-        Icon={"Pen"}
-        defaultTodoValues={defaultValues}
-      />
+      <EditDialogComponent todo={todo} />
     </div>
   );
 };
