@@ -27,6 +27,7 @@ type Itype = {
   setOpen: (value: boolean) => void;
   defaultValues?: Partial<Ttodo>;
 };
+
 const TableForm = ({ setOpen, defaultValues }: Itype) => {
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +45,9 @@ const TableForm = ({ setOpen, defaultValues }: Itype) => {
       body: data.body,
       completed: data.completed,
     });
+
+  
+
     setLoading(false);
     setOpen(false);
   };
