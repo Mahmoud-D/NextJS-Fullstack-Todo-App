@@ -1,6 +1,8 @@
 "use client ";
 
 import TodosTableActions from "./TodosTableActions";
+import { Ttodo } from "@/types";
+
 import {
   Table,
   TableBody,
@@ -11,8 +13,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "./ui/badge";
-
-import { Ttodo } from "@/types";
 
 const TodoTable = ({ todos }: { todos: Ttodo[] }) => {
   return (
