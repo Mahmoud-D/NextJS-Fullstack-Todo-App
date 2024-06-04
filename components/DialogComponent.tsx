@@ -2,8 +2,9 @@
 "use client";
 import { useState } from "react";
 
-import TableForm from "./forms/Form";
+import { Ttodo } from "@/types";
 
+import TableForm from "./forms/Form";
 import {
   Dialog,
   DialogContent,
@@ -13,15 +14,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-
-import { Pen, Plus } from "lucide-react";
-import { Ttodo } from "@/types";
+import { Plus } from "lucide-react";
 
 type Tprops = {
   DialogButtonTitle?: string;
   DialogTitleProp: string;
   DialogDescriptionProp: string;
-  Icon?: string;
   defaultTodoValues?: Partial<Ttodo>;
 };
 
@@ -29,21 +27,15 @@ const DialogComponent = ({
   DialogButtonTitle,
   DialogTitleProp,
   DialogDescriptionProp,
-  Icon = "Plus",
   defaultTodoValues,
-}: Tprops): JSX.Element => {
+}: Tprops) => {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
-          {Icon == "Plus" ? (
-            <Plus size={18} className="mx-1" />
-          ) : (
-            <Pen size={16} className="mx-1" />
-          )}
-
+          <Plus size={18} className="mx-1" />
           {DialogButtonTitle}
         </Button>
       </DialogTrigger>
