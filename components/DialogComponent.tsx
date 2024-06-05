@@ -21,6 +21,7 @@ type Tprops = {
   DialogTitleProp: string;
   DialogDescriptionProp: string;
   defaultTodoValues?: Partial<Ttodo>;
+  userId: string | null;
 };
 
 const DialogComponent = ({
@@ -28,6 +29,7 @@ const DialogComponent = ({
   DialogTitleProp,
   DialogDescriptionProp,
   defaultTodoValues,
+  userId,
 }: Tprops) => {
   const [open, setOpen] = useState(false);
 
@@ -45,7 +47,11 @@ const DialogComponent = ({
           <DialogDescription>{DialogDescriptionProp}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <TableForm setOpen={setOpen} defaultValues={defaultTodoValues} />
+          <TableForm
+            setOpen={setOpen}
+            defaultValues={defaultTodoValues}
+            userId={userId}
+          />
         </div>
       </DialogContent>
     </Dialog>
