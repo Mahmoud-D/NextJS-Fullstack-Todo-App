@@ -4,6 +4,7 @@ type Tprops = {
   DialogButtonTitle?: string;
   DialogTitleProp: string;
   DialogDescriptionProp: string;
+  userId: string | null;
 };
 const defaultTodoValues = {
   title: "First Todo",
@@ -15,6 +16,7 @@ const AddTodo = ({
   DialogButtonTitle,
   DialogTitleProp,
   DialogDescriptionProp,
+  userId,
 }: Tprops): JSX.Element => {
   return (
     <DialogComponent
@@ -22,6 +24,7 @@ const AddTodo = ({
       DialogButtonTitle={DialogButtonTitle}
       DialogTitleProp={DialogTitleProp}
       defaultTodoValues={defaultTodoValues}
+      userId={userId}
     />
   );
 };
