@@ -26,9 +26,10 @@ import Spinner from "../Spinner";
 type Itype = {
   setOpen: (value: boolean) => void;
   defaultValues?: Partial<Ttodo>;
+  userId: string | null;
 };
 
-const TableForm = ({ setOpen, defaultValues }: Itype) => {
+const TableForm = ({ setOpen, defaultValues, userId }: Itype) => {
   const [loading, setLoading] = useState(false);
 
   const formMethods = useForm<Todos>({
@@ -44,7 +45,7 @@ const TableForm = ({ setOpen, defaultValues }: Itype) => {
       title: data.title,
       body: data.body,
       completed: data.completed,
-      // userId: userId,
+      userId: userId,
     });
 
     setLoading(false);
