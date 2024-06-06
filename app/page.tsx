@@ -9,14 +9,16 @@ export default async function Home() {
   const { userId } = auth();
   const todos = await getTodoListAcions({ userId });
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <AddTodo
-        DialogDescriptionProp=" Make changes to your Todos here. Click save to update"
-        DialogButtonTitle="New Todo"
-        DialogTitleProp="New Todo"
-        userId={userId}
-      />
-      <TodoTable todos={todos} />
+    <main className="container">
+      <div className="mx-auto flex w-full lg:w-3/4 flex-col justify-center space-y-4 mt-10">
+        <AddTodo
+          DialogDescriptionProp=" Make changes to your Todos here. Click save to update"
+          DialogButtonTitle="New Todo"
+          DialogTitleProp="New Todo"
+          userId={userId}
+        />
+        <TodoTable todos={todos} />
+      </div>
     </main>
   );
 }
