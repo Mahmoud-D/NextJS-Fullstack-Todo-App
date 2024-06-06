@@ -3,5 +3,5 @@ export type Ttodo = {
   title: string;
   body?: string;
   completed: boolean;
-  createdAt: Date;
+  createdAt?: Date;
 };
