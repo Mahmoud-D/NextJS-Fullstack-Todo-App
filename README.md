@@ -1,8 +1,36 @@
-## NEXTJS FULLSTACK TODO APP
+# NextJS-Fullstack-Todo-App
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a robust Todo application that allows users to add, edit, and delete todos.
 
-## Getting Started
+## Tech Stack
+
+This application is built with:
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn](https://shadcn.github.io/)
+- [React-Hook-Form](https://react-hook-form.com/)
+- [Zod](https://github.com/colinhacks/zod)
+- [Prisma](https://www.prisma.io/)
+- [MongoDB](https://www.mongodb.com/)
+- [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
+- [Server Components](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#server-components)
+
+## Features
+
+- Add new todos
+- Edit existing todos
+- Delete todos
+- Display todos in a table with creation date and status
+- User authentication with sign in and sign out functionality
+
+## Installation
+
+First, clone the repository:
+
+```bash
+git clone https://github.com/Mahmoud-D/NextJS-Fullstack-Todo-App.git
 
 First, run the development server:
 
