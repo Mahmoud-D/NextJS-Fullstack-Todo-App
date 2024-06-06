@@ -47,10 +47,10 @@ const EditForm = ({ todo, setOpen }: IType) => {
   const onSubmit = async (data: Todos) => {
     setLoading(true);
     await updateTodoListAcions({
-      id: todo.id,
+      id: todo.id ?? "",
       title: data.title,
       body: data.body as string,
-      completed: data.completed,
+      completed: data.completed || false,
     });
     setLoading(false);
     setOpen(false);
