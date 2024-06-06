@@ -11,6 +11,9 @@ export const getTodoListAcions = async ({
 }: {
   userId: string | null;
 }) => {
+  if (userId === null) {
+    return [];
+  }
   const todoList = await prisma.todo.findMany({
     where: {
       user_id: userId as string,
