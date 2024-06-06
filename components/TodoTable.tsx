@@ -29,9 +29,9 @@ const TodoTable = ({ todos }: { todos: Ttodo[] }) => {
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody className=" ">
+      <TableBody>
         {todos.map((todo, index) => (
-          <TableRow className="bg-red-800   " key={todo?.id}>
+          <TableRow key={todo?.id}>
             <TableCell className="font-medium ">{index + 1}</TableCell>
             <TableCell className={todo.completed ? "line-through" : ""}>
               {todo?.title}

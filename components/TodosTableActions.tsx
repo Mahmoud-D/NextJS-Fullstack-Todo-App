@@ -18,7 +18,6 @@ const TodosTableActions = ({ todo }: { todo: TodosTableActionsProps }) => {
   const [loading, setLoading] = useState(false);
 
   return (
-    // <div>
     <div className="flex gap-1 ">
       <EditTodoTable todo={todo} />
 
