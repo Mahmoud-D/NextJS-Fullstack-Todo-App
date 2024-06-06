@@ -1,4 +1,10 @@
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+"use client";
+import {
+  RedirectToSignIn,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { ModeToggle } from "./ModeToggle";
 
 const Nav = () => {
@@ -10,7 +16,7 @@ const Nav = () => {
           <UserButton />
         </SignedIn>
         <SignedOut>
-          <SignInButton />
+          <RedirectToSignIn />
         </SignedOut>
       </nav>
     </div>
